@@ -1,31 +1,106 @@
 const firstInput=document.getElementsByName("first-input")[0];
 const secondInput=document.getElementsByName("second-input")[0];
+const exchangeRate=document.querySelector(".exchange-rate");
+const exchangeRate1=document.querySelector(".exchange-rate1");
+const currency=document.querySelectorAll(".currency");
+const currency1=document.querySelectorAll(".currency1");
 const one=document.getElementsByName("one");
 const two=document.getElementsByName("two");
 
 let first;
 let second;
 
-firstInput.addEventListener("keypress",()=>{
+// currency.forEach(item=>{
+//     item.addEventListener("click",()=>{
+//         one.forEach(item=>{
+//             if(item.classList.contains("change")){
+//                 first = item.innerText;
+//             };
+//         })
+//         two.forEach(item=>{
+//             if(item.classList.contains("change")){
+//                 second= item.innerText;
+//             };
+//         })
+//         fetch(`https://api.exchangerate.host/latest?base=${first}&symbols=${second}`)
+//                  .then(r=>r.json())
+//                  .then((data)=>{
+//                      secondInput.value=Number(firstInput.value)*data.rates[second];
+//                      exchangeRate.innerText=`1 ${first} = ${data.rates[second]} ${second}`;
+//                      exchangeRate1.innerText=`1 ${second} = ${1/data.rates[second]} ${first}`;
+//                  })
+//                  .catch(error=>{
+//                     alert("Intenet bağlantınızı yoxlayın")
+//                     console.log("Intenet bağlantınızı yoxlayın")
+//                  }
+//                 )
+//     })
+// })
 
+// currency1.forEach(item=>{
+//     item.addEventListener("click",()=>{
+//         one.forEach(item=>{
+//             if(item.classList.contains("change")){
+//                 first = item.innerText;
+//             };
+//         })
+//         two.forEach(item=>{
+//             if(item.classList.contains("change")){
+//                 second= item.innerText;
+//             };
+//         })
+//         fetch(`https://api.exchangerate.host/latest?base=${second}&symbols=${first}`)
+//                  .then(r=>r.json())
+//                  .then((data)=>{
+//                      firstInput.value=Number(secondInput.value)*data.rates[first];
+//                      exchangeRate.innerText=`1 ${first} = ${1/data.rates[first]} ${second}`;
+//                      exchangeRate1.innerText=`1 ${second} = ${data.rates[first]} ${first}`;
+//                  })
+//     })
+// })
+
+secondInput.addEventListener("keypress",()=>{
     one.forEach(item=>{
         if(item.classList.contains("change")){
-            console.log(item.innerText)
-            first = item.innerText
-        }
-       
+            first = item.innerText;
+        };
     })
     two.forEach(item=>{
         if(item.classList.contains("change")){
-            console.log(item.innerText)
-            second= item.innerText
-        }
+            second= item.innerText;
+        };
+    })
+    fetch(`https://api.exchangerate.host/latest?base=${second}&symbols=${first}`)
+             .then(r=>r.json())
+             .then((data)=>{
+                 firstInput.value=Number(secondInput.value)*data.rates[first];
+                 exchangeRate.innerText=`1 ${first} = ${1/data.rates[first]} ${second}`;
+                 exchangeRate1.innerText=`1 ${second} = ${data.rates[first]} ${first}`;
+             })
+})
+firstInput.addEventListener("keypress",()=>{
+    one.forEach(item=>{
+        if(item.classList.contains("change")){
+            first = item.innerText;
+        };
+    })
+    two.forEach(item=>{
+        if(item.classList.contains("change")){
+            second= item.innerText;
+        };
     })
     fetch(`https://api.exchangerate.host/latest?base=${first}&symbols=${second}`)
              .then(r=>r.json())
              .then((data)=>{
-                 secondInput.value=Number(firstInput.value)*data.rates[second]
+                 secondInput.value=Number(firstInput.value)*data.rates[second];
+                 exchangeRate.innerText=`1 ${first} = ${data.rates[second]} ${second}`;
+                 exchangeRate1.innerText=`1 ${second} = ${1/data.rates[second]} ${first}`;
              })
+             .catch(error=>{
+                alert("Intenet bağlantınızı yoxlayın")
+                console.log("Intenet bağlantınızı yoxlayın")
+             }
+            )
 })
 const rubl=document.getElementById("rubl");
 const dollar=document.getElementById("dollar");
@@ -47,49 +122,14 @@ dollar1.addEventListener("click",changeOfCurrencies);
 euro1.addEventListener("click",changeOfCurrencies);
 fs1.addEventListener("click",changeOfCurrencies);
 
-
-
 function changeOfCurrencies(e){
-    // const firstInput=document.getElementsByName("first-input")[0];
-    // console.log(firstInput)
-    // const secondInput=document.getElementsByName("second-input")[0];
-    // const currencyChange=document.querySelector(".currency");
-    // const currencyChange1=document.querySelector(".currency1");
-    // const one=document.getElementsByName("one");
-    // const two=document.getElementsByName("two");
-    
     if(e.target.className=="currency" || e.target.className=="currency1"){
         const changes=[...e.target.parentElement.children];
         changes.forEach(item=>{
             if(item.classList.contains("change")){
                 item.classList.remove("change");
-            }
-        })
+            };
+        });
         e.target.classList.add("change");
     };
-   
-
-
-    // [...one].forEach(item=>{
-    //     if(item.classList.contains("change") && .classList.contains("change")){
-    //         fetch(`https://api.exchangerate.host/latest?base=${one.innerText}&symbols=${two.innerText}`)
-    //         .then(r=>r.json())
-    //         .then((data)=>{
-    //             secondInput.value=Number(firstInput.value)*data.rates.two.innerText
-    //         })
-    //     };
-    // })
-
-    // if(one.classList.contains("change") && two.classList.contains("change")){
-    //     fetch(`https://api.exchangerate.host/latest?base=${one.innerText}&symbols=${two.innerText}`)
-    //     .then(r=>r.json())
-    //     .then((data)=>{
-    //         secondInput.value=Number(firstInput.value)*data.rates.two.innerText
-    //     })
-    // };
-    // if(rubl.classList.contains("change") && rubl1.classList.contains("change")){
-    //     secondInput.value=Number(firstInput.value);
-    //     exchangeRate.innerText=`1 RUB=1 RUB`
-    // };
-
 };

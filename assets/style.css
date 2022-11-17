@@ -99,9 +99,11 @@ h1{
 }
 .currency:hover{
     background-color: #833AE0;
+    cursor: pointer;
 }
 .currency1:hover{
     background-color: #833AE0;
+    cursor: pointer;
 }
 .money{
     border: 1px solid #E5E5E5;
