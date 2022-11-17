@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,16 +8,20 @@
     <link rel="stylesheet" href="./assets/style.css">
     <title>Document</title>
 </head>
+
 <body>
     <header>
         <div class="header">
+            <div class="media">
+                <img class="menu" src="./assets/images/hamburger-menu.jpg" alt="">
+            </div>
             <div class="logo">
                 <img src="./assets/images/logo.png">
             </div>
             <div class="navigation">
                 <a href="">БАНК</a>
                 <a href="">БИЗНЕС</a>
-                <a href="">БИЗНЕС</a>
+                <a href="">ИНВЕСТИЦИИ</a>
                 <a href="">СТРАХОВАНИЕ</a>
                 <a href="">МОБАЙЛ</a>
                 <a href="">ПУТЕШЕСТВИЯ</a>
@@ -28,7 +33,18 @@
         </div>
     </header>
     <main>
-        <h1>Конвертер валют онлайн</h1>
+        <div class="list">
+            <li>БАНК</li>
+            <li>БИЗНЕС</li>
+            <li>ИНВЕСТИЦИИ</li>
+            <li>СТРАХОВАНИЕ</li>
+            <li>МОБАЙЛ</li>
+            <li>ПУТЕШЕСТВИЯ</li>
+            <li>РАЗВЛЕЧЕНИЯ</li>
+        </div>
+        <div class="heading">
+            <h1>Конвертер валют онлайн</h1>
+        </div>
         <div class="all">
             <div class="first">
                 <p class="text">У меня есть</p>
@@ -39,7 +55,7 @@
                     <div id="fs" name="one" class="currency">GBP</div>
                 </div>
                 <div class="money">
-                    <input type="number" name="first-input">
+                    <input min="0" type="number" name="first-input">
                     <p class="exchange-rate">1 RUB = 0.0135 USD</p>
                 </div>
             </div>
@@ -52,7 +68,7 @@
                     <div id="fs1" name="two" class="currency1">GBP</div>
                 </div>
                 <div class="money">
-                    <input type="number" name="second-input">
+                    <input min="0" type="number" name="second-input">
                     <p class="exchange-rate1">1 USD = 73.8896 RUB</p>
                 </div>
             </div>
@@ -60,4 +76,5 @@
     </main>
     <script src="./assets/main.js"></script>
 </body>
+
 </html>
